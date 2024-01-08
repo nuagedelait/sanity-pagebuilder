@@ -20,6 +20,48 @@ npm install @nuagedelait/sanity-pagebuilder
   - Blocks are documents so you can use them on multiple pages
   - You have basics blocks but you can add yours easely
 
+  #### Settings
+  ![Settings](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/settings.png)  
+
+  #### Content
+  ![Content](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/content.png)
+
+  #### Managment
+  ![Managment](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/mng.png)
+
+  #### Menu
+
+  Menu can contains menu items
+
+  ![Managment](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/menu.png)
+
+  #### Menu item
+
+  Menu items can contains menu (as submenu)
+
+  ![Menu item](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/menu-item.png)
+
+  #### Pages
+
+  Menu items can contains sections
+
+  ![Page](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/homepage.png)
+
+  #### Sections
+
+  Sections can cotnains blocks
+
+  ![Section](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/section.png)
+
+  #### Blocks
+
+  Blocks can be created within the page and are independants documents
+
+  ![blocks](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/blocks.png)
+
+  ![blocks](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/blocks-2.png)
+
+  
 
 ## Usage
 
