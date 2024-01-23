@@ -1,4 +1,4 @@
-# sanity-plugin-pagebuilder
+# Sanity plugin pagebuilder
 
 > This is a **Sanity Studio v3** plugin.
 
@@ -21,7 +21,11 @@ npm install @nuagedelait/sanity-pagebuilder
   - You have basics blocks but you can add yours easely
 
   #### Settings
-  ![Settings](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/settings.png)  
+  ![Settings](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/main/doc/images/settings.png) 
+
+  ##### Redirections ![new](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/main/doc/images/new.png)
+
+  You can add redirections in a array in the settings section
 
   #### Content
   ![Content](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/282a482db6fa3a93164c02f8650e39a78e022190/doc/images/content.png)
@@ -63,6 +67,8 @@ npm install @nuagedelait/sanity-pagebuilder
 
   
 
+
+
 ## Usage
 
 Add it as a plugin in `sanity.config.ts` (or .js):
@@ -93,6 +99,47 @@ export default defineConfig({
     }
   )],
 })
+```
+
+
+## Localization ![new](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/main/doc/images/new.png)
+
+You can use localization by adding a language array to the plugin config
+It will add :
+- Language switcher in top of studio
+- localize url handling (ex: http://localhost:3000/en/studio/structure/) with autmatic document filtering
+- necessary fields based on the document type : 
+  - "lang" field to localize the content 
+  - "translations" field to reference document in multiple languages
+
+  ![blocks](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/main/doc/images/lang_switcher.png)
+
+  ![fields](https://raw.githubusercontent.com/nuagedelait/sanity-pagebuilder/main/doc/images/localize_fields.png)
+
+```ts
+export default defineConfig({
+  //...
+  plugins: [pagebuilderTool(
+    {
+      addBlocksSchemas: [ 'array of blocks schemas in sections' ]
+      addContentSchemas: [ 'array of content schemas like custom `posts` or `articles`' ]
+      addManagmentSchemas: [ 'array of diverses schemas (used if contents)' ] 
+      api: 'sanity api version, default : `v2023-08-01`',
+      languages: ['en','fr']
+    }
+  )],
+})
+```
+If you have custom schema, you can add the localization fields using the i18n function :
+
+```
+import { i18n } from '@nuagedelait/sanity-pagebuilder'
+
+const schemaWithLocale = i18n(
+  schema,  // your custom schema
+  languages, // your languages list, ex : ['en', 'fr']
+  true // if needed, add translations field
+),
 ```
 
 

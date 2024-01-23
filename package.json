@@ -1,6 +1,6 @@
 {
   "name": "@nuagedelait/sanity-pagebuilder",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sanity plugin to create a fast website admin with pagebuilder",
   "keywords": [
     "sanity",
@@ -42,7 +42,8 @@
     "watch": "pkg-utils watch --strict"
   },
   "dependencies": {
-    "@sanity/incompatible-plugin": "^1.0.4"
+    "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/ui": "^2.0.1"
   },
   "devDependencies": {
     "@sanity/pkg-utils": "^3.3.6",

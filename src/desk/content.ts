@@ -2,9 +2,14 @@ import { SchemaTypeDefinition } from 'sanity'
 import { InsertAboveIcon, InsertBelowIcon } from '@sanity/icons'
 import blocks from './blocks'
 import listItems from './listItems'
+import { getPath } from '../utils'
+import { StructureBuilder } from 'sanity/desk'
 
 export default function Content(customContentSchemas: SchemaTypeDefinition[], customBlocksSchemas: SchemaTypeDefinition[]) {
-    return (S: any, api: string, customSchemas: SchemaTypeDefinition[]) => {
+
+    const { lang } = getPath(window.location.href);
+
+    return (S: StructureBuilder, api: string, customSchemas: SchemaTypeDefinition[]) => {
         return S.list().id('_content').items([
             S.listItem()
                 .title('Misc')
@@ -20,7 +25,10 @@ export default function Content(customContentSchemas: SchemaTypeDefinition[], cu
                                     S.editor()
                                         .title('Global header')
                                         .schemaType('header')
-                                        .documentId('global-header')
+                                        .documentId(`global-header${lang ? `-${lang}` : ''}`)
+                                        .initialValueTemplate('header', {
+                                            lang
+                                        })
                                 ),
                             S.listItem()
                                 .title("Global Footer")
@@ -28,8 +36,11 @@ export default function Content(customContentSchemas: SchemaTypeDefinition[], cu
                                 .child(
                                     S.editor()
                                         .title('Global footer')
-                                        .schemaType('header')
-                                        .documentId('global-header')
+                                        .schemaType('footer')
+                                        .documentId(`global-footer${lang ? `-${lang}` : ''}`)
+                                        .initialValueTemplate('footer', {
+                                            lang
+                                        })
                                 ),
                         ])
                 ),

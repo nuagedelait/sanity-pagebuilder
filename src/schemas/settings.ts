@@ -12,6 +12,11 @@ const settingsSchema = defineType({
             title: 'Site Title',
             type: 'string',
         }),
+        defineField({
+            name: 'description',
+            title: 'Site Description',
+            type: 'text',
+        }),
     ],
 })
 

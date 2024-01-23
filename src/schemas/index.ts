@@ -10,26 +10,30 @@ import defaultBlocks from './Blocks'
 import author from './author'
 import category from './category'
 import settings from './settings'
+import redirects from './redirects'
+import i18n, { LanguageType } from '../i18n'
+
 
 export default function schemas(
     customSchemas: SchemaTypeDefinition[],
-    customBlocksSchemas: SchemaTypeDefinition[] = [],
+    languages: LanguageType
 ) {
 
-    let blocks = [...defaultBlocks, ...customBlocksSchemas]
+    let blocks = [...defaultBlocks]
 
     return [
-        page,
-        header,
-        footer,
-        menu,
+        i18n(page, languages, true),
+        i18n(header, languages),
+        i18n(footer, languages),
+        i18n(menu, languages),
         menuItem,
         link,
-        author,
-        category,
-        section(blocks),
-        ...blocks,
-        ...customSchemas,
-        settings([])
+        i18n(author, languages, true),
+        i18n(category, languages, true),
+        i18n(section(blocks), languages),
+        ...i18n(blocks,languages),
+        ...i18n(customSchemas as any, languages),
+        settings([]),
+        redirects
     ]
 }
