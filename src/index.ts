@@ -1,12 +1,16 @@
 import { definePlugin, SchemaTypeDefinition } from 'sanity'
 import schemas from './schemas'
 import structure from './desk'
+import navbar from './studio/navbar'
+export type { PageType } from './schemas/page'
+export { default as i18n } from './i18n';
 
 interface MyPluginConfig {
   addBlocksSchemas?: SchemaTypeDefinition[]
   addContentSchemas?: SchemaTypeDefinition[]
   addManagmentSchemas?: SchemaTypeDefinition[]
-  api: string
+  api?: string,
+  languages?: string[]
 }
 
 export const pagebuilderTool = definePlugin<MyPluginConfig | void>((config = {
@@ -16,15 +20,21 @@ export const pagebuilderTool = definePlugin<MyPluginConfig | void>((config = {
   const customContentSchemas = config?.addContentSchemas || [];
   const customBlocksSchemas = config?.addBlocksSchemas || [];
   const customManagmentSchemas = config?.addManagmentSchemas || [];
+  const languages = config?.languages || undefined
 
   return {
     name: 'sanity-plugin-pagebuilder',
+    studio: {
+      components: {
+        navbar: navbar(languages)
+      }
+    },
     schema: {
       types: schemas([
         ...customManagmentSchemas,
         ...customContentSchemas
       ],
-        customBlocksSchemas),
+        languages),
     },
     tools: (prev, { currentUser }) => {
       prev.forEach(tool => {
@@ -34,7 +44,8 @@ export const pagebuilderTool = definePlugin<MyPluginConfig | void>((config = {
             customManagmentSchemas,
             customBlocksSchemas,
             tool.options.structure,
-            config?.api || 'v2023-08-01'
+            config?.api || 'v2023-08-01',
+            languages
           )
         }
       })

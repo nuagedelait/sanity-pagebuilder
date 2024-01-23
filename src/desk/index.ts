@@ -21,7 +21,8 @@ export default function structure(
     customManagmentSchemas: SchemaTypeDefinition[],
     customBlocksSchemas: SchemaTypeDefinition[],
     addList: null | ((T: StructureBuilder) => Builder),
-    api: string
+    api: string,
+    languages: string[] | undefined = undefined
 ) {
 
     return (S: StructureBuilder) => {
@@ -31,8 +32,8 @@ export default function structure(
         const customSchemas: SchemaTypeDefinition[] = schemas([
             ...customContentSchemas,
             ...customManagmentSchemas,
-            ...customBlocksSchemas
-        ]);
+            ...customBlocksSchemas,
+        ], languages);
 
         if (addList !== null && addList !== undefined) {
 

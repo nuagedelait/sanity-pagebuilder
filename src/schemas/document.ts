@@ -20,7 +20,8 @@ const document = [
         type: 'slug',
         options: {
             source: (doc, options) => {
-                return ((options.parent as any).title)
+                const parent = options.parent as any;
+                return `${parent.title}${parent.lang ? `-${parent.lang}` : ''}`;
             },
             maxLength: 96,
             isUnique: (value, context) => context.defaultIsUnique(value, context),
