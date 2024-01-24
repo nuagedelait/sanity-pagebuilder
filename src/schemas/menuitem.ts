@@ -31,9 +31,18 @@ const menuItem = defineType({
             }
         }),
         defineField({
+            name: 'hasSubmenu',
+            title: 'Show submenu',
+            type: 'boolean',
+            initialValue: false
+        }),
+        defineField({
             name: 'submenu',
             title: 'Submenu',
-            type: 'menu'
+            type: 'menu',
+            hidden: ({parent}) => {
+                return !parent?.hasSubmenu
+            }
         }),
     ],
 })
