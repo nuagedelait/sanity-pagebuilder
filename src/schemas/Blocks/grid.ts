@@ -10,7 +10,7 @@ const grid = defineType({
     fields: [
         ...block,
         defineField({
-            name: 'type',
+            name: 'contenttype',
             title: 'Content type',
             type: 'string',
             validation: (rule) => rule.required()
@@ -38,11 +38,13 @@ const grid = defineType({
     preview: {
         select: {
             title: 'title',
-            subtitle: 'slug.current'
+            subtitle: 'slug.current',
+            media: 'image'
         },
         prepare(selection) {
             return {
-                title: `[GRID] ${selection.title}`
+                title: `[GRID] ${selection.title}`,
+                media: selection.media
             }
         }
     }

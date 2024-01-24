@@ -58,7 +58,8 @@ export default defineType({
             const _description = _title === '' && _subTitle === '' && description ? ` ${description.substr(0, 20)}...` : '';
 
             return {
-                title: `Layout${layout ? ` ${layout}` : ''} | ${_title}${_subTitle}${_description}`
+                title: `Layout${layout ? ` ${layout}` : ''} | ${_title}${_subTitle}${_description}`,
+                media
             }
         }
     }

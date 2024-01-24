@@ -33,7 +33,8 @@ export default defineType({
             const _description = _title === '' && _subTitle === '' && description ? ` ${description.substr(0,20)}...` : '';
 
             return {
-                title: `Menu${layout ? ` ${layout}` : ''} | ${_title}${_subTitle}${_description}`
+                title: `Menu${layout ? ` ${layout}` : ''} | ${_title}${_subTitle}${_description}`,
+                media
             }
         }
     }
