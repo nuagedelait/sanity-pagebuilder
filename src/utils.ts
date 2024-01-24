@@ -3,7 +3,7 @@ interface PathType {
 }
 
 export function getPath(url: string): PathType {
-    const result = new RegExp('http:\/\/([a-z]+\.)?([a-z]+)?(\.[a-z]{2,3})?(:[0-9]+)?\/([a-z]{2})\/(.*)').exec(url);
+    const result = new RegExp('https?:\/\/([a-z]+\.)?([a-z]+)?(\.[a-z]{2,3})?(:[0-9]+)?\/([a-z]{2})\/?(.*)').exec(url);
     const parsedResult = {
         match: undefined,
         subdomain: undefined,

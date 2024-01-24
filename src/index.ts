@@ -2,8 +2,10 @@ import { definePlugin, SchemaTypeDefinition } from 'sanity'
 import schemas from './schemas'
 import structure from './desk'
 import navbar from './studio/navbar'
+
 export type { PageType } from './schemas/page'
 export { default as i18n } from './i18n';
+export { getPath } from './utils';
 
 interface MyPluginConfig {
   addBlocksSchemas?: SchemaTypeDefinition[]
