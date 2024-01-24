@@ -19,7 +19,7 @@ export default function schemas(
     languages: LanguageType
 ) {
 
-    let blocks = [...defaultBlocks]
+    let blocks = i18n([...defaultBlocks],languages)
 
     return [
         i18n(page, languages, true),
@@ -30,7 +30,7 @@ export default function schemas(
         link,
         i18n(author, languages, true),
         i18n(category, languages, true),
-        i18n(section(blocks), languages),
+        section(blocks),
         ...i18n(blocks,languages),
         ...i18n(customSchemas as any, languages),
         settings([]),

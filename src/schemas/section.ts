@@ -1,5 +1,5 @@
 import { UserIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, SanityDocument } from 'sanity'
 import { DocumentType } from './document'
 
 export interface SectionType extends DocumentType {
@@ -41,7 +41,17 @@ export default function Section(blocks: any[]) {
             of: [
                 {
                     type: 'reference',
-                    to: blocks
+                    to: blocks,
+                    options: {
+                        filter: ({ document }: { document: SanityDocument }) => {
+                            return {
+                                filter: 'lang == $lang',
+                                params: {
+                                    lang: document.lang
+                                }
+                            }
+                        }
+                    }
                 }
             ],
         })
