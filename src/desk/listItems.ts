@@ -21,7 +21,7 @@ export default function listItems(schemaNames: string[]) {
                         S.documentList()
                             .schemaType(schemaName)
                             .title(title)
-                            .filter(`_type == "${schemaName}"`)
+                            .filter(`_type == "${schemaName}"${lang ? ` && lang == "${lang}"` : ''}`)
                             .apiVersion(api)
                     )
             } else {
