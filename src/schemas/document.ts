@@ -1,4 +1,4 @@
-import { defineField } from 'sanity'
+import { defineField, ValidationContext, CustomValidatorResult } from 'sanity'
 import { SanityAsset } from '@sanity/image-url/lib/types/types'
 import image from './image'
 
@@ -32,7 +32,14 @@ const document = [
         name: 'title',
         title: 'Title',
         type: 'string',
-        validation: (rule) => rule.required()
+        validation: rule => rule.custom((title: string | undefined, context: ValidationContext): CustomValidatorResult => {
+            if (context && context.path && context.path.length > 1) {
+                return true
+            } else {
+                return title !== undefined && title.length > 0 ? true : 'title is required'
+            }
+
+        })
     }),
     defineField({
         name: 'description',
