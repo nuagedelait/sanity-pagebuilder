@@ -1,6 +1,16 @@
 import { defineType } from 'sanity';
-import block, { prefix } from './block';
+import block, { BlockType, prefix } from './block';
 import { FieldDefinition, SlugOptions } from 'sanity';
+
+export interface LineType {
+    class: string
+    text: string,
+    _key:string
+}
+
+export interface MultiLinesBlockType extends Omit<BlockType, 'title, description'> {
+    lines: LineType[]
+}
 
 const maxLength = 20;
 
@@ -9,17 +19,17 @@ export default defineType({
     title: prefix + 'Multilines',
     type: 'document',
     fields: [
-        ...block.filter( (field:FieldDefinition) => field.name !== 'title' && field.name !== 'description').map( (field:FieldDefinition) => {
-            if(field.name === 'slug'){
+        ...block.filter((field: FieldDefinition) => field.name !== 'title' && field.name !== 'description').map((field: FieldDefinition) => {
+            if (field.name === 'slug') {
                 (field.options as SlugOptions).source = (doc, options) => {
                     const parent = options.parent as any;
-                    const allLines = parent.lines.reduce( (acc:string, line:{text:string}) => acc+= line.text+ ' ','');
-                    const title = allLines.length > maxLength ? `${allLines.slice(0,maxLength)}...` : allLines
+                    const allLines = parent.lines.reduce((acc: string, line: { text: string }) => acc += line.text + ' ', '');
+                    const title = allLines.length > maxLength ? `${allLines.slice(0, maxLength)}...` : allLines
                     return `${title}${parent.lang ? `-${parent.lang}` : ''}`;
-                }   
+                }
             }
             return field;
-        } ),
+        }),
         {
             title: 'Lines',
             name: 'lines',
@@ -30,7 +40,7 @@ export default defineType({
                     preview: {
                         select: {
                             title: 'text',
-                          }
+                        }
                     },
                     fields: [
                         {
@@ -53,8 +63,8 @@ export default defineType({
         },
         prepare(selection) {
             const { lines, media } = selection;
-            const allLines = lines.reduce( (acc:string, line:{text:string}) => acc+= line.text+ ' ','');
-            const title = allLines.length > maxLength ? `${allLines.slice(0,maxLength)}...` : allLines
+            const allLines = lines.reduce((acc: string, line: { text: string }) => acc += line.text + ' ', '');
+            const title = allLines.length > maxLength ? `${allLines.slice(0, maxLength)}...` : allLines
             return {
                 title: `Multilines | ${title}`,
                 media

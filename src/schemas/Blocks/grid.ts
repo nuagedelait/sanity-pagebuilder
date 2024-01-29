@@ -1,6 +1,13 @@
 import { ThLargeIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import block, { prefix } from './block';
+import block, { BlockType, prefix } from './block';
+
+export interface GridBlockType extends BlockType {
+    contenttype: string,
+    category: string,
+    filter: string,
+    limit: number
+}
 
 const grid = defineType({
     name: 'grid',

@@ -1,25 +1,27 @@
 import type { SchemaTypeDefinition } from 'sanity'
-import page from "./page"
-import section from "./section"
-import header from './header'
+import page, { PageType } from "./page"
+import section, { SectionType } from "./section"
+import header, { HeaderType } from './header'
 import footer from './footer'
-import menu from './menu'
-import menuItem from "./menuitem"
-import link from "./link"
-import defaultBlocks from './Blocks'
+import menu, { MenuType } from './menu'
+import menuItem, { MenuItemType } from "./menuitem"
+import link, { LinkType } from "./link"
+import defaultBlocks, { BlocksTypes } from './Blocks'
 import author from './author'
 import category from './category'
 import settings from './settings'
 import redirects from './redirects'
 import i18n, { LanguageType } from '../i18n'
+import { MenuBlockType, LayoutBlockType, GridBlockType, MultiLinesBlockType, BlockType } from './Blocks'
 
+export type { PageType, HeaderType, MenuItemType, LinkType, MenuType, SectionType, BlocksTypes, MenuBlockType, LayoutBlockType, GridBlockType, MultiLinesBlockType, BlockType }
 
 export default function schemas(
     customSchemas: SchemaTypeDefinition[],
     languages: LanguageType
 ) {
 
-    let blocks = i18n([...defaultBlocks],languages)
+    let blocks = i18n([...defaultBlocks], languages)
 
     return [
         i18n(page, languages, true),
@@ -31,7 +33,7 @@ export default function schemas(
         i18n(author, languages, true),
         i18n(category, languages, true),
         section(blocks),
-        ...i18n(blocks,languages),
+        ...i18n(blocks, languages),
         ...i18n(customSchemas as any, languages),
         settings([]),
         redirects

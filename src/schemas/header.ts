@@ -1,5 +1,15 @@
 
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, FileAsset } from 'sanity'
+import type { MenuType } from './menu'
+
+export interface HeaderType {
+  menu?: MenuType,
+  logo?: FileAsset,
+  logoMobile?: FileAsset,
+  siteTitle?: string,
+  siteTitlexs?: string
+  baseline?: string
+}
 
 const Header = defineType({
   name: 'header',
@@ -35,6 +45,12 @@ const Header = defineType({
     defineField({
       name: 'logo',
       title: 'Logo',
+      type: 'image',
+      options: { hotspot: true }
+    }),
+    defineField({
+      name: 'logoMobile',
+      title: 'Logo Mobile',
       type: 'image',
       options: { hotspot: true }
     }),

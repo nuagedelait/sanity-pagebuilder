@@ -1,5 +1,10 @@
 import { defineType } from 'sanity';
-import block, { prefix } from './block';
+import block, { BlockType, prefix } from './block';
+import { MenuType } from '../menu';
+
+export interface MenuBlockType extends BlockType {
+    menu: MenuType
+}
 
 export default defineType({
     name: 'menuBlocks',

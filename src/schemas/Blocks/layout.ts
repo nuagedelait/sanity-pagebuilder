@@ -1,6 +1,16 @@
 import { defineType } from 'sanity';
-import block, { prefix } from './block';
+import block, { prefix, BlockType } from './block';
 import image from '../image';
+import { SanityAsset } from '@sanity/image-url/lib/types/types'
+import { LinkType } from '../link';
+
+export interface LayoutBlockType extends BlockType {
+    subtitle: string
+    images: SanityAsset[]
+    layout: string
+    buttons: LinkType[],
+    text:string
+}
 
 export default defineType({
     name: 'layoutBlocks',
@@ -11,6 +21,11 @@ export default defineType({
         {
             name: 'subtitle',
             title: 'Subtitle',
+            type: 'string',
+        },
+        {
+            name: 'text',
+            title: 'Text',
             type: 'text',
         },
         {

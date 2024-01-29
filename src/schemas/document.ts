@@ -9,7 +9,7 @@ export interface DocumentType {
     },
     title: string,
     description: string
-    coverImage: SanityAsset
+    image: SanityAsset
     date: string,
 }
 

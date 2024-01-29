@@ -1,9 +1,9 @@
 import { definePlugin, SchemaTypeDefinition } from 'sanity'
-import schemas from './schemas'
+import schemas, { PageType, HeaderType, MenuItemType, LinkType, MenuType, SectionType, BlocksTypes, MenuBlockType, LayoutBlockType, GridBlockType, MultiLinesBlockType, BlockType } from './schemas'
 import structure from './desk'
 import navbar from './studio/navbar'
 
-export type { PageType } from './schemas/page'
+export type { PageType, HeaderType, MenuItemType, LinkType, MenuType, SectionType, BlocksTypes, MenuBlockType, LayoutBlockType, GridBlockType, MultiLinesBlockType, BlockType }
 export { default as i18n } from './i18n';
 export { getPath } from './utils';
 

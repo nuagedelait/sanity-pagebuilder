@@ -1,9 +1,19 @@
 import { defineType } from 'sanity';
 
+const targetsValues= [
+    { title: 'self', value: '_self' },
+    { title: 'blank', value: '_blank' },
+    { title: 'parent', value: '_parent' },
+    { title: 'top', value: '_top' }
+] as const;
+
+export const targets = [...targetsValues as any as Array<{title:string, value:string}>];
+export type TargetsType = typeof targetsValues[number]['title']
+
 export interface LinkType {
     text: string,
     href: string,
-    target: '_blank' | '_self' | '_parent'
+    target: TargetsType,
 }
 
 export default defineType({
@@ -26,11 +36,7 @@ export default defineType({
             title: 'Target',
             type: 'string',
             options: {
-                list: [
-                    { title: 'blank', value: '_blank' },
-                    { title: 'self', value: '_self' },
-                    { title: 'parent', value: '_parent' }
-                ],
+                list: targets,
             },
         },
 

@@ -1,5 +1,15 @@
 import { ChevronRightIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
+import { MenuType } from './menu';
+import { targets, LinkType, TargetsType } from './link'
+
+export interface MenuItemType {
+    title?: string,
+    link?: string,
+    target?: TargetsType,
+    hasSubmenu?: boolean,
+    submenu: MenuType
+}
 
 const menuItem = defineType({
     name: 'menuitem',
@@ -22,12 +32,7 @@ const menuItem = defineType({
             title: 'Target',
             type: 'string',
             options: {
-                list: [
-                    { title: 'self', value: '_self' },
-                    { title: 'blank', value: '_blank' },
-                    { title: 'parent', value: '_parent' },
-                    { title: 'top', value: '_top' }
-                ]
+                list: targets
             }
         }),
         defineField({
@@ -40,10 +45,10 @@ const menuItem = defineType({
             name: 'submenu',
             title: 'Submenu',
             type: 'menu',
-            hidden: ({parent}) => {
+            hidden: ({ parent }) => {
                 return !parent?.hasSubmenu
             }
         }),
     ],
 })
-export default menuItem
+export default menuItem;

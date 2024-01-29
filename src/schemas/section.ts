@@ -1,9 +1,13 @@
 import { UserIcon } from '@sanity/icons'
 import { defineField, defineType, SanityDocument } from 'sanity'
-import { DocumentType } from './document'
+import { BlocksTypes } from './Blocks';
 
-export interface SectionType extends DocumentType {
-
+export interface SectionType {
+    _key:string,
+    slug:string
+    displayTitle: boolean
+    content: BlocksTypes[],
+    title:string
 }
 
 export default function Section(blocks: any[]) {
