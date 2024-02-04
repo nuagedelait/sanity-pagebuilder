@@ -40,7 +40,11 @@ export const pagebuilderTool = definePlugin<MyPluginConfig | void>((config = {
     },
     tools: (prev, { currentUser }) => {
       prev.forEach(tool => {
-        if (tool.title === "Structure") {
+        if (tool.name === "structure") {
+          if(!tool.options){
+            tool.options = {};
+          }
+
           tool.options.structure = structure(
             customContentSchemas,
             customManagmentSchemas,

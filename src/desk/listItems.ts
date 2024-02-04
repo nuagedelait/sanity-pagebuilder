@@ -1,4 +1,4 @@
-import { StructureBuilder } from 'sanity/desk';
+import { StructureBuilder } from 'sanity/structure';
 import { getPath } from '../utils';
 import { SchemaTypeDefinition } from 'sanity';
 

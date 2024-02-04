@@ -1,4 +1,4 @@
-import { StructureBuilder } from 'sanity/desk';
+import { StructureBuilder } from 'sanity/structure';
 import { BlockElementIcon } from '@sanity/icons'
 import blocksMenu from './blocksMenu';
 import { blocksRequest } from './queries'

@@ -1,5 +1,5 @@
 import { SchemaTypeDefinition } from 'sanity';
-import type { StructureBuilder } from 'sanity/desk';
+import type { StructureBuilder } from 'sanity/structure';
 import { ComposeIcon } from '@sanity/icons'
 import { prefix } from '../schemas/Blocks/block'
 

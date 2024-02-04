@@ -1,28 +1,37 @@
 import {Card, Flex, Select, Stack} from '@sanity/ui'
 import {LanguageType} from '../i18n'
-import {ChangeEvent} from 'react'
-import { getPath } from '../utils'
+import {ChangeEvent, FunctionComponent} from 'react'
+import {getPath} from '../utils'
 
 export default function Navbar(languages: LanguageType) {
   const onSelect = (event: ChangeEvent<HTMLSelectElement>) => {
-    const path = getPath(window.location.href);
-    window.location.href = `/${event.target.value}/${path.url}`;
+    const path = getPath(window.location.href)
+    window.location.href = `/${event.target.value}/${path.url}`
   }
 
   return (props: any) => {
-
-    const path = getPath(window.location.href);
+    const path = getPath(window.location.href)
 
     return (
       <Card>
-        <Flex justify="center">
-          <>{props.renderDefault(props)}</>
+        <Flex
+          justify="space-between"
+          style={{
+            boxShadow: 'inset 0px 0px 0px 1px #2a2d3f',
+          }}
+        >
+          <div
+            style={{
+              flexGrow: '1',
+            }}
+          >
+            {props.renderDefault(props)}
+          </div>
           {languages && (
             <Stack
               paddingRight={2}
               style={{
                 width: '90px',
-                borderBottom: '1px solid #2a2d3f',
                 height: '50px',
                 display: 'flex',
                 flexDirection: 'column',

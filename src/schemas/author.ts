@@ -1,6 +1,6 @@
-import { UserIcon } from '@sanity/icons'
-import { SanityAsset } from '@sanity/image-url/lib/types/types'
-import { defineField, defineType } from 'sanity'
+import {UserIcon} from '@sanity/icons'
+import {SanityAsset} from '@sanity/image-url/lib/types/types'
+import {defineField, defineType} from 'sanity'
 
 export interface AuthorType {
   name?: string
@@ -22,13 +22,13 @@ const Author = defineType({
     defineField({
       name: 'email',
       title: 'Email',
-      type: 'email'
+      type: 'email',
     }),
     defineField({
       name: 'picture',
       title: 'Picture',
       type: 'image',
-      options: { hotspot: true },
+      options: {hotspot: true},
       validation: (rule) => rule.required(),
     }),
   ],

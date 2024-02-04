@@ -3,7 +3,7 @@ import { InsertAboveIcon, InsertBelowIcon } from '@sanity/icons'
 import blocks from './blocks'
 import listItems from './listItems'
 import { getPath } from '../utils'
-import { StructureBuilder } from 'sanity/desk'
+import { StructureBuilder } from 'sanity/structure'
 
 export default function Content(customContentSchemas: SchemaTypeDefinition[], customBlocksSchemas: SchemaTypeDefinition[]) {
 

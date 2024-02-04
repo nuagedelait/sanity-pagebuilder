@@ -73,7 +73,7 @@ function addLang(fields: any[], languages: LanguageType, type: string, hasTransl
             foundLang = true
             field = defineField(langField(languages));
         }
-        if (field.name === 'translation' && hasTranslation) {
+        if (field.name === 'translations' && hasTranslation) {
             foundTranslation = true
             field = defineField(translationsField(languages, type));
         }

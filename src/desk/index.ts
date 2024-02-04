@@ -1,4 +1,4 @@
-import type { StructureBuilder, ListBuilder, ListItemBuilder, ListItem, Divider } from 'sanity/desk';
+import type { StructureBuilder, ListBuilder, ListItemBuilder, ListItem, Divider } from 'sanity/structure';
 import { SchemaTypeDefinition } from 'sanity';
 import { DocumentIcon } from '@sanity/icons';
 import content from './content';
@@ -20,11 +20,10 @@ export default function structure(
     customContentSchemas: SchemaTypeDefinition[],
     customManagmentSchemas: SchemaTypeDefinition[],
     customBlocksSchemas: SchemaTypeDefinition[],
-    addList: null | ((T: StructureBuilder) => Builder),
+    addList: undefined | ((T: StructureBuilder) => Builder),
     api: string,
     languages: string[] | undefined = undefined
 ) {
-
     return (S: StructureBuilder) => {
 
         let addlists: (ListItemBuilder | ListItem | Divider)[] = [];

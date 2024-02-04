@@ -1,4 +1,4 @@
-import { StructureBuilder } from "sanity/desk"
+import { StructureBuilder } from "sanity/structure"
 import { ControlsIcon } from '@sanity/icons';
 import { SchemaTypeDefinition } from "sanity";
 import { getPath } from "../utils";
