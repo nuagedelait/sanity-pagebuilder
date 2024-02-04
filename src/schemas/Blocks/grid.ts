@@ -10,7 +10,7 @@ export interface GridBlockType extends BlockType {
 }
 
 const grid = defineType({
-    name: 'grid',
+    name: 'gridBlocks',
     title: prefix + 'Grid',
     icon: ThLargeIcon,
     type: 'document',
