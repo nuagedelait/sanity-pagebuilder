@@ -23,8 +23,7 @@ export type {
   BlockType,
   LineType,
   FormBlockType,
-  InputTypes
 }
 
-const blocks: any[] = [menu, layout, grid, tabs, multilines, form, ...inputs]
+const blocks: any[] = [menu, layout, grid, tabs, multilines, form]
 export default blocks

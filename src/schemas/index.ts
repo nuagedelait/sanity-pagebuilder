@@ -12,6 +12,8 @@ import category from './category'
 import settings from './settings'
 import redirects from './redirects'
 import i18n, {LanguageType} from '../i18n'
+import inputs, {InputTypes} from './Blocks/Form/inputs'
+
 export type {
   MenuBlockType,
   LayoutBlockType,
@@ -20,7 +22,6 @@ export type {
   BlockType,
   FormBlockType,
   LineType,
-  InputTypes
 } from './Blocks'
 
 export type {
@@ -31,6 +32,7 @@ export type {
   MenuType,
   SectionType,
   BlocksTypes,
+  InputTypes
 }
 
 export default function schemas(customSchemas: SchemaTypeDefinition[], languages: LanguageType) {
@@ -48,6 +50,7 @@ export default function schemas(customSchemas: SchemaTypeDefinition[], languages
     section(blocks),
     ...i18n(blocks, languages),
     ...i18n(customSchemas as any, languages),
+    ...inputs,
     settings([]),
     redirects,
   ]
