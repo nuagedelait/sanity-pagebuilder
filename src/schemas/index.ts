@@ -35,7 +35,7 @@ export type {
   InputTypes
 }
 
-export default function schemas(customSchemas: SchemaTypeDefinition[], languages: LanguageType) {
+export default function schemas(customSchemas: SchemaTypeDefinition[], languages: LanguageType):SchemaTypeDefinition[] {
   let blocks = i18n([...defaultBlocks], languages)
 
   return [
