@@ -1,4 +1,4 @@
-import {definePlugin, SchemaTypeDefinition} from 'sanity'
+import {defineConfig, definePlugin, PluginOptions, SchemaTypeDefinition} from 'sanity'
 import schemas from './schemas'
 import structure from './desk'
 import navbar from './studio/navbar'
@@ -16,9 +16,9 @@ export type {
   GridBlockType,
   MultiLinesBlockType,
   BlockType,
-  FormBlockType, 
-  LineType, 
-  InputTypes
+  FormBlockType,
+  LineType,
+  InputTypes,
 } from './schemas'
 
 export {default as i18n} from './i18n'
@@ -43,7 +43,7 @@ export const pagebuilderTool = definePlugin<MyPluginConfig | void>(
     const customManagmentSchemas = config?.addManagmentSchemas || []
     const languages = config?.languages || undefined
 
-    return {
+    const returnedConfig:PluginOptions = {
       name: 'sanity-plugin-pagebuilder',
       studio: {
         components: {
@@ -59,7 +59,6 @@ export const pagebuilderTool = definePlugin<MyPluginConfig | void>(
             if (!tool.options) {
               tool.options = {}
             }
-
             tool.options.structure = structure(
               customContentSchemas,
               customManagmentSchemas,
@@ -73,5 +72,6 @@ export const pagebuilderTool = definePlugin<MyPluginConfig | void>(
         return prev
       },
     }
+    return returnedConfig;
   },
 )
