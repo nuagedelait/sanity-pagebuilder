@@ -1,7 +1,8 @@
 import { SchemaTypeDefinition } from 'sanity'
 import listItems from './listItems'
+import { LanguageType } from '../i18n'
 
-export default function Managment(managmentSchemas: SchemaTypeDefinition[]) {
+export default function Managment(managmentSchemas: SchemaTypeDefinition[], languages: LanguageType) {
     return (S: any, api: string, customSchemas: SchemaTypeDefinition[]) => S.list()
         .id('_managment')
         .items(listItems(
@@ -9,6 +10,6 @@ export default function Managment(managmentSchemas: SchemaTypeDefinition[]) {
                 'author',
                 'category',
                 ...managmentSchemas.map(schema => schema.name)
-            ])(S, api, customSchemas)
+            ], languages)(S, api, customSchemas)
         )
 }

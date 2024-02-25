@@ -56,19 +56,19 @@ export default function structure(
                     .title('Settings')
                     .icon(DocumentIcon)
                     .child(
-                        settings()(S, api, customSchemas)
+                        settings(languages)(S, api, customSchemas)
                     ),
                 S.listItem()
                     .title('Content')
                     .icon(DocumentIcon)
                     .child(
-                        content(customContentSchemas, customBlocksSchemas)(S, api, customSchemas)
+                        content(customContentSchemas, customBlocksSchemas, languages)(S, api, customSchemas)
                     ),
                 S.listItem()
                     .title('Management')
                     .icon(DocumentIcon)
                     .child(
-                        managment(customManagmentSchemas)(S, api, customSchemas)
+                        managment(customManagmentSchemas, languages)(S, api, customSchemas)
                     ),
             ])
     }

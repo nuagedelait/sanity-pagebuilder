@@ -1,12 +1,20 @@
 import { StructureBuilder } from 'sanity/structure';
 import { getPath } from '../utils';
 import { SchemaTypeDefinition } from 'sanity';
+import { LanguageType } from '../i18n';
 
-export default function listItems(schemaNames: string[]) {
+export default function listItems(schemaNames: string[], languages: LanguageType) {
 
     return (S: StructureBuilder, api: string, customSchemas: SchemaTypeDefinition[]) => {
 
-        const { lang } = getPath(window.location.href)
+        let lang:string | undefined = undefined;
+
+        if(languages && languages.length > 0){
+            const { langFromPath } = getPath(window.location.href);
+            if(langFromPath && languages.includes(langFromPath)){
+                lang = langFromPath;
+            }
+        }
 
         return schemaNames.map((schemaName: string) => {
 
@@ -40,6 +48,4 @@ export default function listItems(schemaNames: string[]) {
             }
         }).filter(result => result !== null)
     }
-
-
 }

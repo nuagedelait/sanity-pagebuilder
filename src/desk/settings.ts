@@ -2,8 +2,9 @@ import { StructureBuilder } from "sanity/structure"
 import { ControlsIcon } from '@sanity/icons';
 import { SchemaTypeDefinition } from "sanity";
 import { getPath } from "../utils";
+import { LanguageType } from "../i18n";
 
-export default function settings() {
+export default function settings(languages:LanguageType) {
     return (S: StructureBuilder, api: string, customSchemas: SchemaTypeDefinition[]) => {
 
         const { lang } = getPath(window.location.href)
