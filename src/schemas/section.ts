@@ -1,6 +1,7 @@
 import { UserIcon } from '@sanity/icons'
 import { defineField, defineType, SanityDocument } from 'sanity'
 import { BlocksTypes } from './Blocks';
+import document, { DocumentType } from './document'
 
 export interface SectionType {
     _key:string,
@@ -13,29 +14,7 @@ export interface SectionType {
 export default function Section(blocks: any[]) {
 
     const fields: any[] = [
-        defineField({
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            options: {
-                source: 'title',
-                maxLength: 96,
-                isUnique: (value, context) => context.defaultIsUnique(value, context),
-            },
-            validation: (rule) => rule.required()
-        }),
-        defineField({
-            name: 'title',
-            title: 'Title',
-            type: 'string',
-            validation: (rule) => rule.required(),
-        }),
-        defineField({
-            name: 'displayTitle',
-            title: 'Display Title',
-            type: 'boolean',
-            initialValue: false
-        })
+        ...document.filter(field => field.name !== 'date' && field.name !== 'image' && field.name !== 'description')
     ]
     if (blocks.length > 0) {
         const field = defineField({
